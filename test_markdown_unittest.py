@@ -36,6 +36,22 @@ class TestMarkdownPy(unittest.TestCase):
                 run_markdown('**this should be wrapped in strong tags**'),
                 '<p><strong>this should be wrapped in strong tags</strong></p>')
 
+    def test_blockquotes(self):
+        self.assertEqual(run_markdown('> this should have blockquote tags'), 
+                        '<p><blockquote>this should have blockquote tags</blockquote></p>')
+
+    def test_h3(self):
+        self.assertEqual(run_markdown('### this should have h3 tags'), 
+                        '<p><h3>this should have h3 tags</h3></p>')
+
+    def test_h2(self):
+        self.assertEqual(run_markdown('## this should have h2 tags'), 
+                        '<p><h2>this should have h2 tags</h2></p>')
+
+    def test_h1(self):
+        self.assertEqual(run_markdown('# this should have h1 tags'), 
+                        '<p><h1>this should have h1 tags</h1></p>')
+
 if __name__ == '__main__':
     unittest.main()
 

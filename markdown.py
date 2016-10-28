@@ -24,6 +24,14 @@ def convertEm(line):
 
 for line in fileinput.input():
   line = line.rstrip() 
+  if line[0] == '>':
+    line = '<blockquote>' + line[1:].lstrip() + "</blockquote>"
+  elif len(line) > 3 and line[:3] == '###':
+    line = '<h3>' + line[3:].lstrip() + '</h3>'
+  elif len(line) > 2 and line[:2] == '##':
+    line = '<h2>' + line[2:].lstrip() + '</h2>'
+  elif len(line) > 1  and line[:1] == '#':
+    line = '<h1>' + line[1:].lstrip() + '</h1>'
   line = convertStrong(line)
   line = convertEm(line)
   print '<p>' + line + '</p>',
